@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://13.233.116.84:9000/"
+        SONAR_URL = "http://13.232.241.66:9000/"
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
@@ -31,7 +31,7 @@ pipeline {
     }
     stage('Build and Push Docker Image') {
       environment {
-        DOCKER_IMAGE = "kushal/ultimate-cicd:${BUILD_NUMBER}"
+        DOCKER_IMAGE = "priyeshpandey07/ultimate-cicd:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "java-maven-sonar-argocd-helm-k8s/spring-boot-app/Dockerfile"
         REGISTRY_CREDENTIALS = credentials('docker-cred')
       }
@@ -47,8 +47,8 @@ pipeline {
     }
     stage('Update Deployment File') {
         environment {
-            GIT_REPO_NAME = "CICD-Project-1-Manifest"
-            GIT_USER_NAME = "kushal30"
+            GIT_REPO_NAME = "CI-CD-Project"
+            GIT_USER_NAME = "Kushal-Singwani"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
