@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'kushalf5/maven-kushal-docker-agent:v1'
+      image 'abhishekf5/maven-abhishek-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
@@ -68,7 +68,7 @@ pipeline {
 
                     # Make the required changes and commit
                     git checkout main
-                    sed -i -E "s/(kushal30\\/ultimate-cicd:)[^ ]*/\\1${BUILD_NUMBER}/" deployment.yml
+                    sed -i -E "s/(Kushal\\/ultimate-cicd:)[^ ]*/\\1${BUILD_NUMBER}/" deployment.yml
                     git add deployment.yml
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
