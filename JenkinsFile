@@ -48,7 +48,7 @@ pipeline {
     stage('Update Deployment File') {
         environment {
             GIT_REPO_NAME = "CICD-Project-Manifest"
-            GIT_USER_NAME = "Kushal-Singwani"
+            GIT_USER_NAME = "Kushal"
         }
         steps {
             withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
@@ -64,7 +64,7 @@ pipeline {
 
                     # Set the Git user configuration
                     git config user.email "kushalsingwani12@gmail.com"
-                    git config user.name "kushal"
+                    git config user.name "Kushal"
 
                     # Make the required changes and commit
                     git checkout main
