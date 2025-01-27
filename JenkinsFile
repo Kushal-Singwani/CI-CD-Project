@@ -1,15 +1,4 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                script {
-                    sh 'mvn clean install'
-             }
-        }
-    }
- }
-pipeline {
   agent {
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
